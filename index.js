@@ -8,7 +8,7 @@ const client = new Discord.Client();
 const queue = new Map();
 
 //ID DO CANAL DE COMANDOS DO SERVIDOR
-const canalComandos = '403287104710377487';
+const canalComandos = '';
 
 client.once("ready", () => {
   console.log("Bot online!");
@@ -134,21 +134,21 @@ async function execute(message, serverQueue) {
 function skip(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "Precisa entrar em um canal de voz pra pular a musica bobao!"
+      "Precisa entrar em um canal de voz para pular a musica!"
     );
   if (!serverQueue)
-    return message.channel.send("Nao tem nenhuma musica pra pular!");
+    return message.channel.send("Nao tem nenhuma musica para pular!");
   serverQueue.connection.dispatcher.end();
 }
 
 function stop(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "Precisa entrar em um canal de voz pra parar a musica bobao!"
+      "Precisa entrar em um canal de voz para parar a musica!"
     );
 
   if (!serverQueue)
-    return message.channel.send("Nao tem nenhuma musica pra parar!");
+    return message.channel.send("Nao tem nenhuma musica para parar!");
 
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
